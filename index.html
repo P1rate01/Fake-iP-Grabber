@@ -3,6 +3,7 @@
 <head>
 <title>_</title>
 <link rel="icon" type="image/x-icon" href="Black.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
@@ -15,6 +16,16 @@
         color: #3cff00;
         font-family: 'Roboto Mono', monospace;
     }
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 
     p {
         display: inline-block;
@@ -47,10 +58,15 @@
     details > summary::-webkit-details-marker {
       display: none;
     }
+
+    iframe {
+      border: none;
+    }
 </style>
 
-<body class="unselectable">
+<body>
 
+<div class="unselectable sidebar">
 <h1>I Have Your iP Address.</h1>
 <br>
 <br>
@@ -65,10 +81,16 @@
   <summary>
    <p class="underline ">Don't Believe me?</p>
   </summary>
-   <p>Video expletion:</p>
-   <br>
-   <video src="video.mp4" type="video/mp4" width="320" height="240" controls></video>
+  <div id="mydiv"></div>
+<script>
+var getIP = function(json) {
+  document.getElementById("mydiv").innerHTML = json.ip;
+}
+</script>
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&amp;callback=getIP">
+</script>
 </details>
+</div>
 
 </body>
 </html>
